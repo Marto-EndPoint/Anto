@@ -1,0 +1,214 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #fdf6f0;
+    text-align: center;
+    /* Cambia de 'overflow: hidden' a 'overflow: auto' o 'overflow-y: scroll' */
+    overflow: auto; /* Permite el desplazamiento vertical y horizontal cuando sea necesario */
+}  
+.contenedor-principal {
+    min-height: 100vh;
+    overflow-y: auto;
+    width: 100%;
+}
+
+
+/* Títulos principales */
+h1 {
+    font-size: 2.5rem;
+    color: #e086b3;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2 {
+    font-size: 2rem;
+    color: purple;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 .corazon {
+    color: red !important; /* Asegura el color rojo */
+    font-size: 2rem;
+}
+
+/* Contenedor de las imágenes con dimensiones especificadas */
+.imagenes {
+    position: relative;
+    width: 899px; /* Ancho ajustado */
+    height: 1599px; /* Alto ajustado */
+    overflow: hidden;
+}
+
+/* Estilo de cada imagen */
+.imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: transiciónImagen 15s infinite; /* Animación para las imágenes */
+}
+
+/* Animación para transitar entre imágenes */
+@keyframes transiciónImagen {
+    0%, 20% {
+        opacity: 1;
+    }
+    33%, 53% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Cambia el retraso de la animación para cada imagen para que se muestre una por vez */
+.imagen:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.imagen:nth-child(2) {
+    animation-delay: 5s; /* Ajusta el retraso para que la segunda imagen aparezca después de la primera */
+}
+
+.imagen:nth-child(3) {
+    animation-delay: 10s; /* Ajusta el retraso para que la tercera imagen aparezca después de la segunda */
+}
+
+/* Estilo del contador */
+.contador {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; /* Adaptable a dispositivos pequeños */
+    font-size: 24px;
+    color: #4b4b4b;
+}
+
+.contador div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contador img {
+    width: 60px; /* Tamaño por defecto */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.contador span {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3f4f68;
+}
+
+.titulo {
+    font-size: 18px;
+    color: #707070;
+}
+
+/* Estilo del footer */
+footer {
+    margin-top: 40px;
+    font-size: 16px;
+    color: #555;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 10px 20px;
+    background-color: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los corazones animados */
+.corazon {
+    position: fixed;
+    top: -10px;
+    color: #ff69b4; /* Rosa vibrante */
+    opacity: 0.8;
+    pointer-events: none; /* No interferir con clics */
+    animation: caer 6s cubic-bezier(0.25, 1, 0.5, 1) forwards, oscilar 2s ease-in-out infinite;
+    z-index: 9999;
+}
+
+/* Animación para que caigan */
+@keyframes caer {
+    to {
+        transform: translateY(100vh); /* Caída completa */
+        opacity: 0;
+    }
+}
+
+/* Animación para oscilar horizontalmente */
+@keyframes oscilar {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(0) translateX(20px);
+    }
+}
+
+/* Animación de fondo */
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Estilo del botón */
+.btn-audio {
+    background-color: #ff4d6d;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover del botón */
+.btn-audio:hover {
+    background-color: #d1395f;
+    transform: scale(1.05); /* Zoom ligero */
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .contador img {
+        width: 40px; /* Tamaño más pequeño en dispositivos con pantalla más pequeña */
+    }
+    .contador span {
+        font-size: 28px;
+    }
+    .btn-audio {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+/* Ajuste para dispositivos medianos (por ejemplo, tabletas) */
+@media (max-width: 900px) {
+    .contador img {
+        width: 50px; /* Tamaño intermedio */
+    }
+}

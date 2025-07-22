@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ignacio y Antonella</title>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Ignacio y Antonella" />
+  <meta property="og:description" content="Una página dedicada a los recuerdos y momentos especiales de Ignacio y Antonella💖." />
+  <meta property="og:image" content="https://media.discordapp.net/attachments/854256399073017886/1268670954016604160/Fondo.jpg?ex=6761e2e6&is=67609166&hm=325b9d97323a05fcf1f95d57eda4bce12a0d6e9158b0b14bd2d647b28cec4139&=&format=webp&width=994&height=559" />
+  <meta property="og:url" content="http://www.tupagina.com" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="prueba.css">
+  <style>
+/* Fondo animado */
+@keyframes fondoAnimado {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  overflow-y: auto;
+
+  /* Fondo con animación */
+  background: linear-gradient(-45deg, #fdd7e4, #ffb7c3, #ffe4e1, #fff);
+  background-size: 400% 400%;
+  animation: fondoAnimado 10s ease infinite; /* Velocidad y repetición */
+}
+
+
+    /* Estilo para la sección con scroll */
+    .scroll-content {
+      max-height: 500px;  /* Altura máxima del área con scroll */
+      overflow-y: auto;   /* Scroll vertical */
+      width: 80%;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilo para otras secciones */
+    .section {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2rem;
+    }
+
+    .contador {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 24px;
+      color: #4b4b4b;
+    }
+
+    .contador div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contador img {
+      width: 60px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .contador span {
+      font-size: 36px;
+      font-weight: bold;
+      color: #e79eff;
+    }
+
+    .titulo {
+      font-size: 18px;
+      color: #000000;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #000000;
+    }
+
+    /* Carrusel de imágenes */
+    .carousel-container {
+      position: relative;
+      width: 80%;
+      max-width: 300px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 1s ease;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Lluvia de corazones */
+    @keyframes lluvia {
+      0% {
+        transform: translateY(-100vh) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    .corazon {
+      position: fixed;
+      top: -10px;
+      color: red;
+      font-size: 30px;
+      pointer-events: none;
+      animation: lluvia 5s linear infinite;
+      z-index: 9999;
+    }
+
+    /* Alineación del título y subtítulo */
+    .titulo-principal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .titulo-principal h1 {
+      font-size: 3rem;
+      color: #e086b3;
+      margin: 0;
+    }
+
+    .titulo-principal h2 {
+      font-size: 2rem;
+      color: purple;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    /* Estilo del botón */
+    .btn-audio {
+      padding: 10px 20px;
+      background-color: #d16b86;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-audio:hover {
+      background-color: #c15574;
+    }
+  </style>
+  <script>
+    // Fecha de inicio (3 de junio de 2024)
+    const fechaInicio = new Date('2024-06-03');
+
+    function actualizarContador() {
+      const hoy = new Date();
+      let years = hoy.getFullYear() - fechaInicio.getFullYear();
+      let months = hoy.getMonth() - fechaInicio.getMonth();
+      let days = hoy.getDate() - fechaInicio.getDate();
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      if (days < 0) {
+        months--;
+        const lastMonth = new Date(hoy.getFullYear(), hoy.getMonth(), 0);
+        days += lastMonth.getDate();
+      }
+
+      document.getElementById('años').textContent = years;
+      document.getElementById('meses').textContent = months;
+      document.getElementById('dias').textContent = days;
+    }
+
+    window.onload = actualizarContador;
+
+    // Carrusel de imágenes
+    let currentIndex = 0;
+    const images = [
+  'https://via.placeholder.com/600x300/FFB6C1/FFFFFF?text=Imagen+1',
+  'https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+2',
+  'https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+3',
+  'https://via.placeholder.com/600x300/FF6347/FFFFFF?text=Imagen+4',
+  'https://via.placeholder.com/600x300/40E0D0/FFFFFF?text=Imagen+5',
+  'https://via.placeholder.com/600x300/7FFF00/FFFFFF?text=Imagen+6',
+  'https://via.placeholder.com/600x300/D2691E/FFFFFF?text=Imagen+7',
+  'https://via.placeholder.com/600x300/FF4500/FFFFFF?text=Imagen+8',
+  'https://via.placeholder.com/600x300/DAA520/FFFFFF?text=Imagen+9',
+  'https://via.placeholder.com/600x300/0000FF/FFFFFF?text=Imagen+10',
+  'https://via.placeholder.com/600x300/8A2BE2/FFFFFF?text=Imagen+11',
+  'https://via.placeholder.com/600x300/5F9EA0/FFFFFF?text=Imagen+12',
+  'https://via.placeholder.com/600x300/FF1493/FFFFFF?text=Imagen+13',
+  'https://via.placeholder.com/600x300/D3D3D3/FFFFFF?text=Imagen+14',
+  'https://via.placeholder.com/600x300/F0E68C/FFFFFF?text=Imagen+15',
+  'https://via.placeholder.com/600x300/8B0000/FFFFFF?text=Imagen+16',
+  'https://via.placeholder.com/600x300/ADFF2F/FFFFFF?text=Imagen+17',
+  'https://via.placeholder.com/600x300/9932CC/FFFFFF?text=Imagen+18',
+  'https://via.placeholder.com/600x300/00CED1/FFFFFF?text=Imagen+19',
+  'https://via.placeholder.com/600x300/FF6347/FFFFFF?text=Imagen+20',
+  'https://via.placeholder.com/600x300/FFD700/FFFFFF?text=Imagen+21',
+  'https://via.placeholder.com/600x300/DB7093/FFFFFF?text=Imagen+22',
+  'https://via.placeholder.com/600x300/9400D3/FFFFFF?text=Imagen+23',
+  'https://via.placeholder.com/600x300/20B2AA/FFFFFF?text=Imagen+24',
+  'https://via.placeholder.com/600x300/8B0000/FFFFFF?text=Imagen+25'
+];
+
+
+    function moveCarousel() {
+      currentIndex = (currentIndex + 1) % images.length;
+      const carousel = document.querySelector('.carousel');
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(moveCarousel, 3000);  // Mueve el carrusel cada 3 segundos
+
+    // Crear corazones y otros emojis flotantes
+    function crearCorazon() {
+      const emojis = ["❤️", "💖", "💗", "💕", "⌨️", "💊", "💻", "🩺"];
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.textContent = emoji;
+      corazon.style.left = Math.random() * window.innerWidth + "px";
+      corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
+      corazon.style.fontSize = Math.random() * 20 + 20 + "px";
+      document.body.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, 5000);
+    }
+
+    setInterval(crearCorazon, 200); // Crea un emoji cada 200ms
+
+    // Función para iniciar o pausar la canción
+    let audio = new Audio('MILO J - M.A.I.mp3');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</head>
+<body>
+  <!-- Títulos y carrusel -->
+  <div class="titulo-principal">
+    <h1>Ignacio y Antonella</h1>
+    <div class="carousel-container">
+      <div class="carousel">
+        <img src="imagenes/1.jpg" alt="Imagen 1" />
+        <img src="imagenes/2.jpg" alt="Imagen 2" />
+        <img src="imagenes/3.jpg" alt="Imagen 3" />
+        <img src="imagenes/4.jpg" alt="Imagen 4" />
+        <img src="imagenes/5.jpg" alt="Imagen 5" />
+        <img src="imagenes/6.jpg" alt="Imagen 6" />
+        <img src="imagenes/7.jpg" alt="Imagen 7" />
+        <img src="imagenes/8.jpg" alt="Imagen 8" />
+        <img src="imagenes/9.jpg" alt="Imagen 9" />
+        <img src="imagenes/10.jpg" alt="Imagen 10" />
+        <img src="imagenes/11.jpg" alt="Imagen 11" />
+        <img src="imagenes/12.jpg" alt="Imagen 12" />
+        <img src="imagenes/13.jpg" alt="Imagen 13" />
+        <img src="imagenes/14.jpg" alt="Imagen 14" />
+        <img src="imagenes/15.jpg" alt="Imagen 15" />
+        <img src="imagenes/16.jpg" alt="Imagen 16" />
+        <img src="imagenes/17.jpg" alt="Imagen 17" />
+        <img src="imagenes/18.jpg" alt="Imagen 18" />
+        <img src="imagenes/19.jpg" alt="Imagen 19" />
+        <img src="imagenes/20.jpg" alt="Imagen 20" /> <!-- mas a futuro -->
+
+
+      </div>
+    </div>
+  </div>
+
+  <h2><span style="color: red;">♡</span> Juntos Por <span style="color: red;">♡</span></h2>
+
+  <!-- Contador central -->
+  <div class="contador">
+    <div>
+      <img src= "imagenes/calen.png" alt="Calendario Años">
+      <span id="años">0</span>
+      <div class="titulo">Años</div>
+    </div>
+    <div>
+      <img src="imagenes/calen.png" alt="Calendario Meses">
+      <span id="meses">0</span>
+      <div class="titulo">Meses</div>
+    </div>
+    <div>
+      <img src="imagenes/calen.png" alt="Calendario Días">
+      <span id="dias">0</span>
+      <div class="titulo">Días</div>
+    </div>
+  </div>
+
+  <!-- Botón para iniciar o pausar la canción -->
+  <button class="btn-audio" onclick="toggleAudio()">Play/Pause</button>
+
+  <!-- Pie de página -->
+  <footer>
+    Mi amor💗, No sé si las palabras pueden realmente expresar lo que siento por ti, 
+    pero quiero que sepas lo mucho que te aprecio y valoro. Cada día a tu lado es un 
+    regalo que agradezco profundamente. Tu amor, tu apoyo y tu comprensión hacen que 
+    cada momento sea especial. Eres mi compañera, mi amiga, mi todo. A tu lado he 
+    aprendido lo que significa realmente ser feliz, y me siento increíblemente 
+    afortunado de poder compartir mi vida contigo💖.
+  </footer>
+</body>
+</html>
